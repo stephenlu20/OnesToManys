@@ -22,10 +22,10 @@ public class UserService {
         validateCreateDto(dto);
 
         User user = new User(
-            dto.firstName,
-            dto.lastName,
-            dto.age,
-            dto.weight
+            dto.getFirstName(),
+            dto.getLastName(),
+            dto.getAge(),
+            dto.getWeight()
         );
 
         return userRepository.save(user);
@@ -37,20 +37,20 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        if (dto.firstName != null) user.setFirstName(dto.firstName);
-        if (dto.lastName != null)  user.setLastName(dto.lastName);
-        if (dto.age != null)       user.setAge(dto.age);
-        if (dto.weight != null)    user.setWeight(dto.weight);
+        if (dto.getFirstName() != null) user.setFirstName(dto.getFirstName());
+        if (dto.getLastName() != null)  user.setLastName(dto.getLastName());
+        if (dto.getAge() != null)       user.setAge(dto.getAge());
+        if (dto.getWeight() != null)    user.setWeight(dto.getWeight());
         Objects.requireNonNull(user, "User cannot be null");
 
         return userRepository.save(user);
     }
 
     private void validateCreateDto(CreateUserDto dto) {
-        if (dto.firstName == null || dto.firstName.isBlank())
+        if (dto.getFirstName() == null || dto.getFirstName().isBlank())
             throw new IllegalArgumentException("First name is required");
 
-        if (dto.lastName == null || dto.lastName.isBlank())
+        if (dto.getLastName() == null || dto.getLastName().isBlank())
             throw new IllegalArgumentException("Last name is required");
     }
 }

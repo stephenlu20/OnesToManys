@@ -11,25 +11,25 @@ public class Activity {
     private Long id;
 
     private long userId;
-    private String Label;
-    private String Category;
-    private int Duration;
+    private String label;
+    private String category;
+    private int duration;
     private String dateTime;
     private boolean isCompleted = false;
-    private String Description;
-    private String Note;
+    private String description;
+    private String note;
 
     public Activity() {}
 
-    public Activity(String label, String category, int duration, String dateTime, boolean isCompleted, String description, String note, long userId) {
-        Label = label;
-        Category = category;
-        Duration = duration;
+    public Activity(long userId, String label, String category, int duration, String dateTime, boolean isCompleted, String description, String note) {
+        this.userId = userId;
+        this.label = label;
+        this.category = category;
+        this.duration = duration;
         this.dateTime = dateTime;
         this.isCompleted = isCompleted;
-        Description = description;
-        Note = note;
-        this.userId = userId;
+        this.description = description;
+        this.note = note;
     }
 
     // Getters and Setters
@@ -43,22 +43,22 @@ public class Activity {
         this.id = id;
     }
     public String getLabel() {
-        return Label;
+        return label;
     }
     public void setLabel(String label) {
-        Label = label;
+        this.label = label;
     }
     public String getCategory() {
-        return Category;
+        return category;
     }
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
     public int getDuration() {
-        return Duration;
+        return duration;
     }
     public void setDuration(int duration) {
-        Duration = duration;
+        this.duration = duration;
     }
     public String getDateTime() {
         return dateTime;
@@ -73,15 +73,15 @@ public class Activity {
         isCompleted = !isCompleted;
     }
     public String getDescription() {
-        return Description;
+        return description;
     }
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
     public String getNote() {
-        return Note;
+        return note;
     }
     public void setNote(String note) {
-        Note = note;
+        this.note = note;
     }
 }
