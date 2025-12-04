@@ -1,5 +1,7 @@
 package com.planner.api.service;
 
+import java.util.Objects;
+
 import org.springframework.stereotype.Service;
 import com.planner.api.dto.CreateUserDto;
 import com.planner.api.dto.UpdateUserDto;
@@ -31,6 +33,7 @@ public class UserService {
 
     // Modify
     public User modifyUser(Long id, UpdateUserDto dto) {
+        Objects.requireNonNull(id, "ID cannot be null");
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
@@ -38,6 +41,7 @@ public class UserService {
         if (dto.lastName != null)  user.setLastName(dto.lastName);
         if (dto.age != null)       user.setAge(dto.age);
         if (dto.weight != null)    user.setWeight(dto.weight);
+        Objects.requireNonNull(user, "User cannot be null");
 
         return userRepository.save(user);
     }
