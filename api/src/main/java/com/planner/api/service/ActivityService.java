@@ -22,6 +22,7 @@ public class ActivityService {
         this.activityRepository = activityRepository;
     }
 
+    // Get
     @GetMapping("/{id}")
     public ResponseEntity<Activity> getActivityById(@PathVariable Long id) {
         Objects.requireNonNull(id, "ID cannot be null");
