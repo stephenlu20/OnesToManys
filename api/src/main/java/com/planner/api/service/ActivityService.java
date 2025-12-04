@@ -2,6 +2,7 @@ package com.planner.api.service;
 
 import java.util.Objects;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -74,7 +75,7 @@ public class ActivityService {
         return activityRepository.save(activity);   
     }
 
-    public ResponseEntity<Void> deleteActivity(Long id) {
+    public ResponseEntity<Activity> deleteActivity(Long id) {
         Objects.requireNonNull(id, "ID cannot be null");
         if (!activityRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -84,12 +85,12 @@ public class ActivityService {
     }
 
     @Transactional
-    public boolean deleteActivitiesByUserId(Long userId) {
+    public ResponseEntity<Activity> deleteActivitiesByUserId(Long userId) {
         List<Activity> activities = activityRepository.findAllByUserId(userId);
         if (activities.isEmpty()) {
-            return false; // nothing to delete
+            return ResponseEntity.notFound().build();
         }
         activityRepository.deleteAll(activities);
-        return true;
+        return ResponseEntity.noContent().build();
     }
 }

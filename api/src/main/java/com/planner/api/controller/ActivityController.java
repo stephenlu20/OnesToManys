@@ -55,22 +55,15 @@ public class ActivityController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteActivity(@PathVariable Long id) {
-            Objects.requireNonNull(id, "ID cannot be null");
-            Activity activity = activityRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Activity not found"));
-            Objects.requireNonNull(activity, "Activity cannot be null");
-            activityRepository.delete(activity);
+    public ResponseEntity<Activity> deleteActivity(@PathVariable Long id) {
+        Objects.requireNonNull(id, "ID cannot be null");
+        return activityService.deleteActivity(id);
     }
 
     @DeleteMapping("/user/{userId}")
     public ResponseEntity<Activity> deleteActivitiesByUserId(@PathVariable Long userId) {
         Objects.requireNonNull(userId, "User ID cannot be null");
-        boolean deleted = activityService.deleteActivitiesByUserId(userId);
-        if (!deleted) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.noContent().build();
+        return activityService.deleteActivitiesByUserId(userId);
     }
     
 }

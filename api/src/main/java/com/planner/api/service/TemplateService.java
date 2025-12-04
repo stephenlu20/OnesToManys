@@ -29,6 +29,4 @@ public class TemplateService {
                 .orElseThrow(() -> new IllegalArgumentException("Activity not found"));
         return ResponseEntity.ok(template);
     }
-
-
 }
