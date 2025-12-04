@@ -1,20 +1,20 @@
 package com.planner.api.dto;
 
 public class UpdateTemplateDto {
-    private String Label;
-    private String Category;
+    private String label;
+    private String category;
     
     // Getters and Setters
     public String getLabel() {
-        return Label;
+        return label;
     }
     public String getCategory() {
-        return Category;
+        return category;
     }
     public void setLabel(String label) {
-        Label = label;
+        this.label = label;
     }
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }   
 }

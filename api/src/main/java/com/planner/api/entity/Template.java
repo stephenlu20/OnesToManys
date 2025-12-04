@@ -10,14 +10,14 @@ public class Template {
     private Long id;
 
     private long userId;
-    private String Label;
-    private String Category;
+    private String label;
+    private String category;
     
     public Template() {}
 
     public Template(String label, String category, long userId) {
-        Label = label;
-        Category = category;
+        this.label = label;
+        this.category = category;
         this.userId = userId;
     }
 
@@ -31,16 +31,16 @@ public class Template {
         this.id = id;
     }
     public String getLabel() {
-        return Label;
+        return label;
     }
     public void setLabel(String label) {
-        Label = label;
+        this.label = label;
     }
     public String getCategory() {
-        return Category;
+        return category;
     }
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
     public long getUserId() {
         return userId;

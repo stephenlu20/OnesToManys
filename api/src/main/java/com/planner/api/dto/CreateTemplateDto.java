@@ -2,26 +2,26 @@ package com.planner.api.dto;
 
 public class CreateTemplateDto {
     private long userId;
-    private String Label;
-    private String Category;
+    private String label;
+    private String category;
     
     // Getters and Setters
     public long getUserId() {
         return userId;
     }
     public String getLabel() {
-        return Label;
+        return label;
     }
     public String getCategory() {
-        return Category;
+        return category;
     }
     public void setUserId(long userId) {
         this.userId = userId;
     }
     public void setLabel(String label) {
-        Label = label;
+        this.label = label;
     }
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
 }
