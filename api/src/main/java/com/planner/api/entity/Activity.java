@@ -21,13 +21,12 @@ public class Activity {
 
     public Activity() {}
 
-    public Activity(long userId, String label, String category, int duration, String dateTime, boolean isCompleted, String description, String note) {
+    public Activity(long userId, String label, String category, int duration, String dateTime, String description, String note) {
         this.userId = userId;
         this.label = label;
         this.category = category;
         this.duration = duration;
         this.dateTime = dateTime;
-        this.isCompleted = isCompleted;
         this.description = description;
         this.note = note;
     }

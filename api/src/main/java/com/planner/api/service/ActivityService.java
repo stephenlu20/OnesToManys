@@ -2,7 +2,6 @@ package com.planner.api.service;
 
 import java.util.Objects;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +42,6 @@ public class ActivityService {
             dto.getCategory(),
             dto.getDuration(),
             dto.getDateTime(),
-            dto.getIsCompleted(),
             dto.getDescription(),
             dto.getNote()
         );

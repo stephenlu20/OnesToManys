@@ -5,5 +5,5 @@ import com.planner.api.entity.Template;
 import java.util.List;
 
 public interface TemplateRepository extends JpaRepository<Template, Long>{
-    List<Template> findByUserId(Long userId);
+    List<Template> findAllByUserId(Long userId);
 }

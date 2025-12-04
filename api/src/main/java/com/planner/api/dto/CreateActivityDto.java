@@ -7,7 +7,6 @@ public class CreateActivityDto {
     private String category;
     private int duration;
     private String dateTime;
-    private boolean isCompleted;
     private String description;
     private String note;
 
@@ -26,9 +25,6 @@ public class CreateActivityDto {
     }
     public String getDateTime() {
         return dateTime;
-    }
-    public boolean getIsCompleted() {
-        return isCompleted;
     }
     public String getDescription() {
         return description;
@@ -50,9 +46,6 @@ public class CreateActivityDto {
     }
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
-    }
-    public void setIsCompleted(boolean isCompleted) {
-        this.isCompleted = isCompleted;
     }
     public void setDescription(String description) {
         this.description = description;

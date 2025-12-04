@@ -15,10 +15,10 @@ public class Template {
     
     public Template() {}
 
-    public Template(String label, String category, long userId) {
+    public Template(long userId, String label, String category) {
+        this.userId = userId;
         this.label = label;
         this.category = category;
-        this.userId = userId;
     }
 
     // Getters and Setters
