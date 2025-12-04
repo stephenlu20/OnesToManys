@@ -1,14 +1,12 @@
 package com.planner.api.service;
 
+import org.springframework.stereotype.Service;
 import java.util.Objects;
-
-import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
-
-import com.planner.api.entity.Activity;
 import com.planner.api.entity.Template;
 import com.planner.api.repository.TemplateRepository;
 
+@Service
 public class TemplateService {
 
     private final TemplateRepository templateRepository;
@@ -32,5 +30,5 @@ public class TemplateService {
         return ResponseEntity.ok(template);
     }
 
-    
+
 }

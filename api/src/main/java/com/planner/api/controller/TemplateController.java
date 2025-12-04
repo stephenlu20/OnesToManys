@@ -8,8 +8,10 @@ import com.planner.api.dto.UpdateTemplateDto;
 import com.planner.api.entity.Template;
 import com.planner.api.service.TemplateService;
 import com.planner.api.repository.TemplateRepository;
-import com.planner.api.entity.Template;;
+import com.planner.api.entity.Template;
 
+@RestController
+@RequestMapping("/template")
 public class TemplateController {
 
     private final TemplateService templateService;
