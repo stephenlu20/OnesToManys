@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.planner.api.entity.Activity;
 import com.planner.api.dto.CreateActivityDto;
@@ -82,12 +83,13 @@ public class ActivityService {
         return ResponseEntity.noContent().build();
     }
 
-    public ResponseEntity<Void> deleteActivitiesByUserId(long userId) {
+    @Transactional
+    public boolean deleteActivitiesByUserId(Long userId) {
         List<Activity> activities = activityRepository.findAllByUserId(userId);
         if (activities.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            return false; // nothing to delete
         }
         activityRepository.deleteAll(activities);
-        return ResponseEntity.noContent().build();
+        return true;
     }
 }

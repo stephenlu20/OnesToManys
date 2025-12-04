@@ -1,6 +1,7 @@
 package com.planner.api.controller;
 import java.util.Objects;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.planner.api.dto.CreateActivityDto;
 import com.planner.api.dto.UpdateActivityDto;
@@ -31,7 +32,7 @@ public class ActivityController {
     }
 
     @GetMapping("/user/{userId}")
-    public  List<Activity> getActivitiesByUserId(@PathVariable Long userId) {
+    public List<Activity> getActivitiesByUserId(@PathVariable Long userId) {
         Objects.requireNonNull(userId, "User ID cannot be null");
         return activityRepository.findAllByUserId(userId);
     }
@@ -63,12 +64,13 @@ public class ActivityController {
     }
 
     @DeleteMapping("/user/{userId}")
-    public void deleteActivitiesByUserId(@PathVariable Long userId) {
+    public ResponseEntity<Activity> deleteActivitiesByUserId(@PathVariable Long userId) {
         Objects.requireNonNull(userId, "User ID cannot be null");
-        List<Activity> activities = activityRepository.findAllByUserId(userId);
-        if (activities.isEmpty()) {
-            throw new IllegalArgumentException("No activities found for the user"); 
+        boolean deleted = activityService.deleteActivitiesByUserId(userId);
+        if (!deleted) {
+            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.noContent().build();
     }
     
 }
