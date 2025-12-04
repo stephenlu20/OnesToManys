@@ -28,6 +28,7 @@ public class ActivityService {
     }
 
     public ResponseEntity<List<Activity>> getActivitiesByUserId(long userId) {
+        Objects.requireNonNull(userId, "User ID cannot be null");
         List<Activity> activities = activityRepository.findAllByUserId(userId);
         return ResponseEntity.ok(activities);
     }

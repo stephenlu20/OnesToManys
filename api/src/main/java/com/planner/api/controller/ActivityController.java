@@ -24,11 +24,11 @@ public class ActivityController {
     }
 
     @GetMapping("/{id}")
-        public Activity getActivity(@PathVariable Long id) {
-            Objects.requireNonNull(id, "ID cannot be null");
-            return activityRepository.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Activity not found"));
-        }
+    public Activity getActivity(@PathVariable Long id) {
+        Objects.requireNonNull(id, "ID cannot be null");
+        return activityRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Activity not found"));
+    }
 
     @GetMapping("/user/{userId}")
     public  List<Activity> getActivitiesByUserId(@PathVariable Long userId) {
