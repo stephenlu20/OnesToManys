@@ -8,9 +8,6 @@ import com.planner.api.entity.Activity;
 import com.planner.api.repository.ActivityRepository;
 import com.planner.api.service.ActivityService;
 import java.util.List;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
