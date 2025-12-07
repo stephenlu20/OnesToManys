@@ -13,6 +13,7 @@ import com.planner.api.repository.TemplateRepository;
 
 @RestController
 @RequestMapping("/template")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TemplateController {
 
     private final TemplateService templateService;
