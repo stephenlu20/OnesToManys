@@ -1,0 +1,96 @@
+sqlite3 planner.db < init_db.sql
+
+# GET User by ID
+curl -X GET http://localhost:8080/user/1
+
+# POST Create New User (ID will be 6)
+curl -X POST http://localhost:8080/user \
+  -H "Content-Type: application/json" \
+  -d '{
+    "firstName": "Demo",
+    "lastName": "User",
+    "age": 25,
+    "weight": 150
+  }'
+
+# PUT Update User (update user 6)
+curl -X PUT http://localhost:8080/user/6 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "firstName": "Updated",
+    "lastName": "Demo",
+    "age": 26,
+    "weight": 155
+  }'
+
+# DELETE User (delete user 6)
+curl -X DELETE http://localhost:8080/user/6
+
+# GET Activities by User ID
+curl -X GET http://localhost:8080/activity/user/1
+
+# GET Activity by ID
+curl -X GET http://localhost:8080/activity/1
+
+# POST Create New Activity (ID will be 51)
+curl -X POST http://localhost:8080/activity \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": 1,
+    "label": "Demo Meeting",
+    "category": "work",
+    "duration": 60,
+    "dateTime": "2024-12-10T14:00:00Z",
+    "description": "Demonstration activity",
+    "note": "This is for testing"
+  }'
+
+# PUT Update Activity (update activity 51)
+curl -X PUT http://localhost:8080/activity/51 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "label": "Updated Demo Meeting",
+    "category": "work",
+    "duration": 90,
+    "dateTime": "2024-12-10T15:00:00Z",
+    "description": "Updated demonstration activity",
+    "note": "Updated for testing"
+  }'
+
+# PUT Toggle Activity Completion (toggle activity 51)
+curl -X PUT http://localhost:8080/activity/toggle/51
+
+# DELETE Activity by ID (delete activity 51)
+curl -X DELETE http://localhost:8080/activity/51
+
+# DELETE All Activities by User ID
+curl -X DELETE http://localhost:8080/activity/user/1
+
+# GET Templates by User ID
+curl -X GET http://localhost:8080/template/user/1
+
+# GET Template by ID
+curl -X GET http://localhost:8080/template/1
+
+# POST Create New Template (ID will be 51)
+curl -X POST http://localhost:8080/template \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": 1,
+    "label": "Demo Template",
+    "category": "work"
+  }'
+
+# PUT Update Template (update template 51)
+curl -X PUT http://localhost:8080/template/51 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "label": "Updated Demo Template",
+    "category": "fitness"
+  }'
+
+# DELETE Template by ID (delete template 51)
+curl -X DELETE http://localhost:8080/template/51
+
+# DELETE All Templates by User ID
+curl -X DELETE http://localhost:8080/template/user/1

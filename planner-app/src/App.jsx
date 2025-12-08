@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import TabNavigation from './components/common/TabNavigation';
+import TestingPanel from './components/testing/TestingPanel';
+import UserLogin from './components/auth/UserLogin';
+import Calendar from './components/calendar/Calendar';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [activeTab, setActiveTab] = useState('testing');
+  const [loggedInUserId, setLoggedInUserId] = useState(null);
+
+  const tabs = [
+    { id: 'testing', label: 'API Testing' },
+    { id: 'calendar', label: 'Calendar View' }
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-gray-100">
+      <TabNavigation 
+        activeTab={activeTab} 
+        setActiveTab={setActiveTab} 
+        tabs={tabs}
+      />
+      
+      <div className="max-w-7xl mx-auto p-6">
+        {activeTab === 'testing' ? (
+          <TestingPanel />
+        ) : (
+          <>
+            {!loggedInUserId ? (
+              <UserLogin onLogin={setLoggedInUserId} />
+            ) : (
+              <div>
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-2xl font-bold">
+                    Calendar for User #{loggedInUserId}
+                  </h2>
+                  <button
+                    onClick={() => setLoggedInUserId(null)}
+                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+                  >
+                    Logout
+                  </button>
+                </div>
+                <Calendar userId={loggedInUserId} />
+              </div>
+            )}
+          </>
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
-
-export default App
