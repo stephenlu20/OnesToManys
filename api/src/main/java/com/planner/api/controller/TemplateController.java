@@ -49,15 +49,15 @@ public class TemplateController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Template> deleteTemplate(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTemplate(@PathVariable Long id) {
         Objects.requireNonNull(id, "ID cannot be null");
         return templateService.deleteTemplate(id);
     }
 
     @DeleteMapping("/user/{userId}")
-    public ResponseEntity<Template> deleteActivitiesByUserId(@PathVariable Long userId) {
+    public ResponseEntity<Void> deleteActivitiesByUserId(@PathVariable Long userId) {
         Objects.requireNonNull(userId, "User ID cannot be null");
-        return templateService.deleteActivitiesByUserId(userId);
+        return templateService.deleteTemplatesByUserId(userId);
     }
     
 }

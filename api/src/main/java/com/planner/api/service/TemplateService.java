@@ -57,7 +57,7 @@ public class TemplateService {
         return templateRepository.save(template);
     }
 
-    public ResponseEntity<Template> deleteTemplate(Long id) {
+    public ResponseEntity<Void> deleteTemplate(Long id) {
         Objects.requireNonNull(id, "ID cannot be null");
         if (!templateRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -67,7 +67,7 @@ public class TemplateService {
     }
 
     @Transactional
-    public ResponseEntity<Template> deleteActivitiesByUserId(Long userId) {
+    public ResponseEntity<Void> deleteTemplatesByUserId(Long userId) {
         List<Template> activities = templateRepository.findAllByUserId(userId);
         if (activities.isEmpty()) {
             return ResponseEntity.notFound().build();

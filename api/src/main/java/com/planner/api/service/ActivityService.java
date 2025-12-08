@@ -73,7 +73,7 @@ public class ActivityService {
         return activityRepository.save(activity);   
     }
 
-    public ResponseEntity<Activity> deleteActivity(Long id) {
+    public ResponseEntity<Void> deleteActivity(Long id) {
         Objects.requireNonNull(id, "ID cannot be null");
         if (!activityRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -83,7 +83,7 @@ public class ActivityService {
     }
 
     @Transactional
-    public ResponseEntity<Activity> deleteActivitiesByUserId(Long userId) {
+    public ResponseEntity<Void> deleteActivitiesByUserId(Long userId) {
         List<Activity> activities = activityRepository.findAllByUserId(userId);
         if (activities.isEmpty()) {
             return ResponseEntity.notFound().build();

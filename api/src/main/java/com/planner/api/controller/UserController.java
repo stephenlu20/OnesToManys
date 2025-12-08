@@ -1,6 +1,7 @@
 package com.planner.api.controller;
 import java.util.Objects;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.planner.api.dto.CreateUserDto;
 import com.planner.api.dto.UpdateUserDto;
@@ -41,11 +42,12 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
-            Objects.requireNonNull(id, "ID cannot be null");
-            User user = userRepository.findById(id)
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        Objects.requireNonNull(id, "ID cannot be null");
+        User user = userRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
-            Objects.requireNonNull(user, "User cannot be null");
-            userRepository.delete(user);
+        Objects.requireNonNull(user, "User cannot be null");
+        userRepository.delete(user);
+        return ResponseEntity.noContent().build();
     }
 }

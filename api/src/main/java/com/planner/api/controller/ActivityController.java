@@ -56,13 +56,13 @@ public class ActivityController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Activity> deleteActivity(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteActivity(@PathVariable Long id) {
         Objects.requireNonNull(id, "ID cannot be null");
         return activityService.deleteActivity(id);
     }
 
     @DeleteMapping("/user/{userId}")
-    public ResponseEntity<Activity> deleteActivitiesByUserId(@PathVariable Long userId) {
+    public ResponseEntity<Void> deleteActivitiesByUserId(@PathVariable Long userId) {
         Objects.requireNonNull(userId, "User ID cannot be null");
         return activityService.deleteActivitiesByUserId(userId);
     }
