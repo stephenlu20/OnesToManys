@@ -4,8 +4,13 @@ import { convertToISO } from '../../utils/dateUtils';
 import ApiTestSection from './ApiTestSection';
 
 export default function ActivityTestingTab({ setResponse, setLoading }) {
-  const [userId, setUserId] = useState('');
-  const [activityId, setActivityId] = useState('');
+  const [getUserIdInput, setGetUserIdInput] = useState('');
+  const [getActivityIdInput, setGetActivityIdInput] = useState('');
+  const [updateActivityIdInput, setUpdateActivityIdInput] = useState('');
+  const [toggleActivityIdInput, setToggleActivityIdInput] = useState('');
+  const [deleteActivityIdInput, setDeleteActivityIdInput] = useState('');
+  const [deleteByUserIdInput, setDeleteByUserIdInput] = useState('');
+  
   const [activityData, setActivityData] = useState({
     userId: '',
     label: '',
@@ -17,11 +22,12 @@ export default function ActivityTestingTab({ setResponse, setLoading }) {
     note: ''
   });
 
-  const executeApiCall = async (apiFunction) => {
+  const executeApiCall = async (apiFunction, clearFunction) => {
     setLoading(true);
     try {
       const data = await apiFunction();
       setResponse(JSON.stringify(data, null, 2));
+      if (clearFunction) clearFunction();
     } catch (error) {
       setResponse(`Error: ${error.message}`);
     }
@@ -36,14 +42,17 @@ export default function ActivityTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Get Activities by User ID"
         method="GET"
-        onSubmit={() => executeApiCall(() => activityService.getAllByUserId(userId))}
+        onSubmit={() => executeApiCall(
+          () => activityService.getAllByUserId(getUserIdInput),
+          () => setGetUserIdInput('')
+        )}
         buttonLabel="GET Activities"
       >
         <input
           type="number"
           placeholder="User ID"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={getUserIdInput}
+          onChange={(e) => setGetUserIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
@@ -52,14 +61,17 @@ export default function ActivityTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Get Activity by ID"
         method="GET"
-        onSubmit={() => executeApiCall(() => activityService.getById(activityId))}
+        onSubmit={() => executeApiCall(
+          () => activityService.getById(getActivityIdInput),
+          () => setGetActivityIdInput('')
+        )}
         buttonLabel="GET Activity"
       >
         <input
           type="number"
           placeholder="Activity ID"
-          value={activityId}
-          onChange={(e) => setActivityId(e.target.value)}
+          value={getActivityIdInput}
+          onChange={(e) => setGetActivityIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
@@ -75,7 +87,19 @@ export default function ActivityTestingTab({ setResponse, setLoading }) {
             duration: parseInt(activityData.duration),
             dateTime: convertToISO(activityData.dateTime)
           };
-          executeApiCall(() => activityService.create(payload));
+          executeApiCall(
+            () => activityService.create(payload),
+            () => setActivityData({
+              userId: '',
+              label: '',
+              category: '',
+              duration: '',
+              dateTime: '',
+              isCompleted: false,
+              description: '',
+              note: ''
+            })
+          );
         }}
         buttonLabel="POST Create Activity"
       >
@@ -152,15 +176,18 @@ export default function ActivityTestingTab({ setResponse, setLoading }) {
             duration: parseInt(activityData.duration),
             dateTime: convertToISO(activityData.dateTime)
           };
-          executeApiCall(() => activityService.update(activityId, payload));
+          executeApiCall(
+            () => activityService.update(updateActivityIdInput, payload),
+            () => setUpdateActivityIdInput('')
+          );
         }}
         buttonLabel="PUT Update Activity"
       >
         <input
           type="number"
           placeholder="Activity ID to Update"
-          value={activityId}
-          onChange={(e) => setActivityId(e.target.value)}
+          value={updateActivityIdInput}
+          onChange={(e) => setUpdateActivityIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
         <div className="text-sm text-gray-600">
@@ -172,14 +199,17 @@ export default function ActivityTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Toggle Activity Completion"
         method="PUT"
-        onSubmit={() => executeApiCall(() => activityService.toggleCompletion(activityId))}
+        onSubmit={() => executeApiCall(
+          () => activityService.toggleCompletion(toggleActivityIdInput),
+          () => setToggleActivityIdInput('')
+        )}
         buttonLabel="PUT Toggle Completion"
       >
         <input
           type="number"
           placeholder="Activity ID"
-          value={activityId}
-          onChange={(e) => setActivityId(e.target.value)}
+          value={toggleActivityIdInput}
+          onChange={(e) => setToggleActivityIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
@@ -188,14 +218,17 @@ export default function ActivityTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Delete Activity"
         method="DELETE"
-        onSubmit={() => executeApiCall(() => activityService.delete(activityId))}
+        onSubmit={() => executeApiCall(
+          () => activityService.delete(deleteActivityIdInput),
+          () => setDeleteActivityIdInput('')
+        )}
         buttonLabel="DELETE Activity"
       >
         <input
           type="number"
           placeholder="Activity ID to Delete"
-          value={activityId}
-          onChange={(e) => setActivityId(e.target.value)}
+          value={deleteActivityIdInput}
+          onChange={(e) => setDeleteActivityIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
@@ -204,14 +237,17 @@ export default function ActivityTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Delete All Activities by User ID"
         method="DELETE"
-        onSubmit={() => executeApiCall(() => activityService.deleteByUserId(userId))}
+        onSubmit={() => executeApiCall(
+          () => activityService.deleteByUserId(deleteByUserIdInput),
+          () => setDeleteByUserIdInput('')
+        )}
         buttonLabel="DELETE All User Activities"
       >
         <input
           type="number"
           placeholder="User ID"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={deleteByUserIdInput}
+          onChange={(e) => setDeleteByUserIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>

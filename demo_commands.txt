@@ -1,39 +1,39 @@
 sqlite3 planner.db < init_db.sql
 
 # GET User by ID
-curl -X GET http://localhost:8080/user/1
+curl -s -X GET http://localhost:8080/user/1 | jq
 
 # POST Create New User (ID will be 6)
-curl -X POST http://localhost:8080/user \
+curl -s -X POST http://localhost:8080/user \
   -H "Content-Type: application/json" \
   -d '{
     "firstName": "Demo",
     "lastName": "User",
     "age": 25,
     "weight": 150
-  }'
+  }' | jq
 
 # PUT Update User (update user 6)
-curl -X PUT http://localhost:8080/user/6 \
+curl -s -X PUT http://localhost:8080/user/6 \
   -H "Content-Type: application/json" \
   -d '{
     "firstName": "Updated",
     "lastName": "Demo",
     "age": 26,
     "weight": 155
-  }'
+  }' | jq
 
 # DELETE User (delete user 6)
-curl -X DELETE http://localhost:8080/user/6
+curl -s -X DELETE http://localhost:8080/user/6 | jq
 
 # GET Activities by User ID
-curl -X GET http://localhost:8080/activity/user/1
+curl -s -X GET http://localhost:8080/activity/user/1 | jq
 
 # GET Activity by ID
-curl -X GET http://localhost:8080/activity/1
+curl -s -X GET http://localhost:8080/activity/1 | jq
 
 # POST Create New Activity (ID will be 51)
-curl -X POST http://localhost:8080/activity \
+curl -s -X POST http://localhost:8080/activity \
   -H "Content-Type: application/json" \
   -d '{
     "userId": 1,
@@ -43,10 +43,10 @@ curl -X POST http://localhost:8080/activity \
     "dateTime": "2024-12-10T14:00:00Z",
     "description": "Demonstration activity",
     "note": "This is for testing"
-  }'
+  }' | jq
 
 # PUT Update Activity (update activity 51)
-curl -X PUT http://localhost:8080/activity/51 \
+curl -s -X PUT http://localhost:8080/activity/51 \
   -H "Content-Type: application/json" \
   -d '{
     "label": "Updated Demo Meeting",
@@ -55,42 +55,42 @@ curl -X PUT http://localhost:8080/activity/51 \
     "dateTime": "2024-12-10T15:00:00Z",
     "description": "Updated demonstration activity",
     "note": "Updated for testing"
-  }'
+  }' | jq
 
 # PUT Toggle Activity Completion (toggle activity 51)
-curl -X PUT http://localhost:8080/activity/toggle/51
+curl -s -X PUT http://localhost:8080/activity/toggle/51 | jq
 
 # DELETE Activity by ID (delete activity 51)
-curl -X DELETE http://localhost:8080/activity/51
+curl -s -X DELETE http://localhost:8080/activity/51 | jq
 
 # DELETE All Activities by User ID
-curl -X DELETE http://localhost:8080/activity/user/1
+curl -s -X DELETE http://localhost:8080/activity/user/1 | jq
 
 # GET Templates by User ID
-curl -X GET http://localhost:8080/template/user/1
+curl -s -X GET http://localhost:8080/template/user/1 | jq
 
 # GET Template by ID
-curl -X GET http://localhost:8080/template/1
+curl -s -X GET http://localhost:8080/template/1 | jq
 
 # POST Create New Template (ID will be 51)
-curl -X POST http://localhost:8080/template \
+curl -s -X POST http://localhost:8080/template \
   -H "Content-Type: application/json" \
   -d '{
     "userId": 1,
     "label": "Demo Template",
     "category": "work"
-  }'
+  }' | jq
 
 # PUT Update Template (update template 51)
-curl -X PUT http://localhost:8080/template/51 \
+curl -s -X PUT http://localhost:8080/template/51 \
   -H "Content-Type: application/json" \
   -d '{
     "label": "Updated Demo Template",
     "category": "fitness"
-  }'
+  }' | jq
 
 # DELETE Template by ID (delete template 51)
-curl -X DELETE http://localhost:8080/template/51
+curl -s -X DELETE http://localhost:8080/template/51 | jq
 
 # DELETE All Templates by User ID
-curl -X DELETE http://localhost:8080/template/user/1
+curl -s -X DELETE http://localhost:8080/template/user/1 | jq

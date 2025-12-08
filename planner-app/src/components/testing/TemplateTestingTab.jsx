@@ -3,19 +3,24 @@ import { templateService } from '../../services/templateService';
 import ApiTestSection from './ApiTestSection';
 
 export default function TemplateTestingTab({ setResponse, setLoading }) {
-  const [userId, setUserId] = useState('');
-  const [templateId, setTemplateId] = useState('');
+  const [getUserIdInput, setGetUserIdInput] = useState('');
+  const [getTemplateIdInput, setGetTemplateIdInput] = useState('');
+  const [updateTemplateIdInput, setUpdateTemplateIdInput] = useState('');
+  const [deleteTemplateIdInput, setDeleteTemplateIdInput] = useState('');
+  const [deleteByUserIdInput, setDeleteByUserIdInput] = useState('');
+  
   const [templateData, setTemplateData] = useState({
     userId: '',
     label: '',
     category: ''
   });
 
-  const executeApiCall = async (apiFunction) => {
+  const executeApiCall = async (apiFunction, clearFunction) => {
     setLoading(true);
     try {
       const data = await apiFunction();
       setResponse(JSON.stringify(data, null, 2));
+      if (clearFunction) clearFunction();
     } catch (error) {
       setResponse(`Error: ${error.message}`);
     }
@@ -30,14 +35,17 @@ export default function TemplateTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Get Templates by User ID"
         method="GET"
-        onSubmit={() => executeApiCall(() => templateService.getAllByUserId(userId))}
+        onSubmit={() => executeApiCall(
+          () => templateService.getAllByUserId(getUserIdInput),
+          () => setGetUserIdInput('')
+        )}
         buttonLabel="GET Templates"
       >
         <input
           type="number"
           placeholder="User ID"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={getUserIdInput}
+          onChange={(e) => setGetUserIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
@@ -46,14 +54,17 @@ export default function TemplateTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Get Template by ID"
         method="GET"
-        onSubmit={() => executeApiCall(() => templateService.getById(templateId))}
+        onSubmit={() => executeApiCall(
+          () => templateService.getById(getTemplateIdInput),
+          () => setGetTemplateIdInput('')
+        )}
         buttonLabel="GET Template"
       >
         <input
           type="number"
           placeholder="Template ID"
-          value={templateId}
-          onChange={(e) => setTemplateId(e.target.value)}
+          value={getTemplateIdInput}
+          onChange={(e) => setGetTemplateIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
@@ -67,7 +78,14 @@ export default function TemplateTestingTab({ setResponse, setLoading }) {
             ...templateData,
             userId: parseInt(templateData.userId)
           };
-          executeApiCall(() => templateService.create(payload));
+          executeApiCall(
+            () => templateService.create(payload),
+            () => setTemplateData({
+              userId: '',
+              label: '',
+              category: ''
+            })
+          );
         }}
         buttonLabel="POST Create Template"
       >
@@ -105,15 +123,18 @@ export default function TemplateTestingTab({ setResponse, setLoading }) {
             ...templateData,
             userId: parseInt(templateData.userId)
           };
-          executeApiCall(() => templateService.update(templateId, payload));
+          executeApiCall(
+            () => templateService.update(updateTemplateIdInput, payload),
+            () => setUpdateTemplateIdInput('')
+          );
         }}
         buttonLabel="PUT Update Template"
       >
         <input
           type="number"
           placeholder="Template ID to Update"
-          value={templateId}
-          onChange={(e) => setTemplateId(e.target.value)}
+          value={updateTemplateIdInput}
+          onChange={(e) => setUpdateTemplateIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
         <div className="text-sm text-gray-600">
@@ -125,14 +146,17 @@ export default function TemplateTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Delete Template"
         method="DELETE"
-        onSubmit={() => executeApiCall(() => templateService.delete(templateId))}
+        onSubmit={() => executeApiCall(
+          () => templateService.delete(deleteTemplateIdInput),
+          () => setDeleteTemplateIdInput('')
+        )}
         buttonLabel="DELETE Template"
       >
         <input
           type="number"
           placeholder="Template ID to Delete"
-          value={templateId}
-          onChange={(e) => setTemplateId(e.target.value)}
+          value={deleteTemplateIdInput}
+          onChange={(e) => setDeleteTemplateIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
@@ -141,14 +165,17 @@ export default function TemplateTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Delete All Templates by User ID"
         method="DELETE"
-        onSubmit={() => executeApiCall(() => templateService.deleteByUserId(userId))}
+        onSubmit={() => executeApiCall(
+          () => templateService.deleteByUserId(deleteByUserIdInput),
+          () => setDeleteByUserIdInput('')
+        )}
         buttonLabel="DELETE All User Templates"
       >
         <input
           type="number"
           placeholder="User ID"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={deleteByUserIdInput}
+          onChange={(e) => setDeleteByUserIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>

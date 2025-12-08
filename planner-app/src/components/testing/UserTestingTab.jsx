@@ -3,7 +3,10 @@ import { userService } from '../../services/userService';
 import ApiTestSection from './ApiTestSection';
 
 export default function UserTestingTab({ setResponse, setLoading }) {
-  const [userId, setUserId] = useState('');
+  const [getUserIdInput, setGetUserIdInput] = useState('');
+  const [updateUserIdInput, setUpdateUserIdInput] = useState('');
+  const [deleteUserIdInput, setDeleteUserIdInput] = useState('');
+  
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
@@ -11,11 +14,12 @@ export default function UserTestingTab({ setResponse, setLoading }) {
     weight: ''
   });
 
-  const executeApiCall = async (apiFunction) => {
+  const executeApiCall = async (apiFunction, clearFunction) => {
     setLoading(true);
     try {
       const data = await apiFunction();
       setResponse(JSON.stringify(data, null, 2));
+      if (clearFunction) clearFunction();
     } catch (error) {
       setResponse(`Error: ${error.message}`);
     }
@@ -30,14 +34,17 @@ export default function UserTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Get User by ID"
         method="GET"
-        onSubmit={() => executeApiCall(() => userService.getById(userId))}
+        onSubmit={() => executeApiCall(
+          () => userService.getById(getUserIdInput),
+          () => setGetUserIdInput('')
+        )}
         buttonLabel="GET User"
       >
         <input
           type="number"
           placeholder="User ID"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={getUserIdInput}
+          onChange={(e) => setGetUserIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
@@ -52,7 +59,15 @@ export default function UserTestingTab({ setResponse, setLoading }) {
             age: parseInt(userData.age),
             weight: parseInt(userData.weight)
           };
-          executeApiCall(() => userService.create(payload));
+          executeApiCall(
+            () => userService.create(payload),
+            () => setUserData({
+              firstName: '',
+              lastName: '',
+              age: '',
+              weight: ''
+            })
+          );
         }}
         buttonLabel="POST Create User"
       >
@@ -98,15 +113,18 @@ export default function UserTestingTab({ setResponse, setLoading }) {
             age: parseInt(userData.age),
             weight: parseInt(userData.weight)
           };
-          executeApiCall(() => userService.update(userId, payload));
+          executeApiCall(
+            () => userService.update(updateUserIdInput, payload),
+            () => setUpdateUserIdInput('')
+          );
         }}
         buttonLabel="PUT Update User"
       >
         <input
           type="number"
           placeholder="User ID to Update"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={updateUserIdInput}
+          onChange={(e) => setUpdateUserIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full mb-3"
         />
         <div className="text-sm text-gray-600 mb-3">
@@ -118,14 +136,17 @@ export default function UserTestingTab({ setResponse, setLoading }) {
       <ApiTestSection
         title="Delete User"
         method="DELETE"
-        onSubmit={() => executeApiCall(() => userService.delete(userId))}
+        onSubmit={() => executeApiCall(
+          () => userService.delete(deleteUserIdInput),
+          () => setDeleteUserIdInput('')
+        )}
         buttonLabel="DELETE User"
       >
         <input
           type="number"
           placeholder="User ID to Delete"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={deleteUserIdInput}
+          onChange={(e) => setDeleteUserIdInput(e.target.value)}
           className="border px-3 py-2 rounded w-full"
         />
       </ApiTestSection>
