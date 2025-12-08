@@ -3,7 +3,7 @@ import TabNavigation from './components/common/TabNavigation';
 import TestingPanel from './components/testing/TestingPanel';
 import UserLogin from './components/auth/UserLogin';
 import Calendar from './components/calendar/Calendar';
-
+import './index.css' 
 export default function App() {
   const [activeTab, setActiveTab] = useState('testing');
   const [loggedInUserId, setLoggedInUserId] = useState(null);
