@@ -11,6 +11,7 @@ import com.planner.api.service.ActivityService;
 import java.util.List;
 
 
+
 @RestController
 @RequestMapping("/activity")
 @CrossOrigin(origins = "http://localhost:5173")
@@ -24,6 +25,12 @@ public class ActivityController {
         this.activityService = activityService;
         this.activityRepository = activityRepository;
     }
+
+    @GetMapping
+    public List<Activity> getAllActivities() {
+        return activityService.getAllActivities();
+    }
+    
 
     @GetMapping("/{id}")
     public Activity getActivity(@PathVariable Long id) {
