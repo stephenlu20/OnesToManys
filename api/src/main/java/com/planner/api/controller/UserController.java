@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.planner.api.dto.CreateUserDto;
 import com.planner.api.dto.UpdateUserDto;
-import com.planner.api.entity.Activity;
 import com.planner.api.entity.User;
 import com.planner.api.repository.UserRepository;
 import com.planner.api.service.UserService;
