@@ -1,10 +1,12 @@
 package com.planner.api.service;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 import com.planner.api.dto.CreateUserDto;
 import com.planner.api.dto.UpdateUserDto;
+import com.planner.api.entity.Activity;
 import com.planner.api.entity.User;
 import com.planner.api.repository.UserRepository;
 
@@ -15,6 +17,11 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    // Get
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     // Create

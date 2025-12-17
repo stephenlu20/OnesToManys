@@ -1,10 +1,12 @@
 package com.planner.api.controller;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.planner.api.dto.CreateUserDto;
 import com.planner.api.dto.UpdateUserDto;
+import com.planner.api.entity.Activity;
 import com.planner.api.entity.User;
 import com.planner.api.repository.UserRepository;
 import com.planner.api.service.UserService;
@@ -21,6 +23,11 @@ public class UserController {
     public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
+    }
+
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")

@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import com.planner.api.dto.CreateTemplateDto;
 import com.planner.api.dto.UpdateTemplateDto;
+import com.planner.api.entity.Activity;
 import com.planner.api.entity.Template;
 import com.planner.api.service.TemplateService;
 import com.planner.api.repository.TemplateRepository;
+
 
 @RestController
 @RequestMapping("/template")
@@ -23,6 +25,12 @@ public class TemplateController {
         this.templateService = templateService;
         this.templateRepository = templateRepository;
     }
+
+    @GetMapping
+    public List<Template> getAllTemplates() {
+        return templateService.getAllTemplates();
+    }
+    
 
     @GetMapping("/{id}")
     public Template getTemplate(@PathVariable Long id) {

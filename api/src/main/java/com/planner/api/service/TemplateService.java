@@ -22,6 +22,10 @@ public class TemplateService {
     }
 
     // Get
+    public List<Template> getAllTemplates() {
+        return templateRepository.findAll();
+    }
+
     public ResponseEntity<Template> getTemplateById(Long id) {
         Objects.requireNonNull(id, "ID cannot be null");
         Template template = templateRepository.findById(id)
