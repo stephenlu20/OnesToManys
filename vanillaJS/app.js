@@ -1,16 +1,16 @@
-const loadButton = document.getElementById("loadBtn");
-const activityList = document.getElementById("activityList");
+const loadActivitiesButton = document.getElementById("loadActivities");
+const list = document.getElementById("activityList");
 
-loadButton.addEventListener("click", loadActivities);
+loadActivitiesButton.addEventListener("click", loadActivities);
 
 function loadActivities() {
     fetchActivities()
         .then(activities => {
-            clearElement(activityList);
+            clearElement(list);
 
             activities.forEach(activity => {
                 const li = createListItem(formatActivity(activity));
-                activityList.appendChild(li);
+                list.appendChild(li);
             });
         })
         .catch(error => {
@@ -23,11 +23,12 @@ function formatActivity(activity) {
     const formattedDate = date.toLocaleString();
 
     return `
-${activity.label} (${activity.category})
-Duration: ${activity.duration} min
-Date: ${formattedDate}
-Description: ${activity.description}
-Note: ${activity.note}
-Completed: ${activity.completed ? "Yes" : "No"}
-`.trim();
+        ID: ${activity.id}
+        ${activity.label} (${activity.category})
+        Duration: ${activity.duration} min
+        Date: ${formattedDate}
+        Description: ${activity.description}
+        Note: ${activity.note}
+        Completed: ${activity.completed ? "Yes" : "No"}
+        `.trim();
 }

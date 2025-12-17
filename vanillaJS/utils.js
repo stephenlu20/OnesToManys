@@ -4,6 +4,7 @@ function clearElement(element) {
 
 function createListItem(text) {
     const li = document.createElement("li");
+    li.style.whiteSpace = "pre-line";
     li.textContent = text;
     return li;
 }

@@ -1,7 +1,7 @@
-const API_BASE_URL = "http://localhost:8080/activity";
+const API_BASE_URL = "http://localhost:8080";
 
 function fetchActivities() {
-    return fetch(`${API_BASE_URL}`)
+    return fetch(`${API_BASE_URL}` + '/activity')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`);
