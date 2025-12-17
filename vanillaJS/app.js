@@ -1,7 +1,11 @@
 const loadActivitiesButton = document.getElementById("loadActivities");
-const list = document.getElementById("activityList");
+const loadUsersButton = document.getElementById("loadUsers");
+const loadTemplatesButton = document.getElementById("loadTemplates");
+const list = document.getElementById("list");
 
 loadActivitiesButton.addEventListener("click", loadActivities);
+loadUsersButton.addEventListener("click", loadUsers);
+loadTemplatesButton.addEventListener("click", loadTemplates);
 
 function loadActivities() {
     fetchActivities()
@@ -30,5 +34,30 @@ function formatActivity(activity) {
         Description: ${activity.description}
         Note: ${activity.note}
         Completed: ${activity.completed ? "Yes" : "No"}
+        `.trim();
+}
+
+function loadUsers() {
+    fetchUsers()
+        .then(users => {
+            clearElement(list);
+
+            users.forEach(user => {
+                const li = createListItem(formatUser(user));
+                list.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error("Failed to load users:", error);
+        });
+}
+
+function formatUser(user) {
+    return `
+        ID: ${user.id}
+        First Name: ${user.firstName}
+        Last Name: ${user.lastName}
+        Age: ${user.age}
+        Weight: ${user.weight}
         `.trim();
 }

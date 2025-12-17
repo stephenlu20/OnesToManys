@@ -9,3 +9,13 @@ function fetchActivities() {
             return response.json();
         });
 }
+
+function fetchUsers() {
+    return fetch(`${API_BASE_URL}` + '/user')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+            return response.json();
+        });
+}
