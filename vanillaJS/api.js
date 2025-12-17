@@ -19,3 +19,13 @@ function fetchUsers() {
             return response.json();
         });
 }
+
+function fetchTemplates() {
+    return fetch(`${API_BASE_URL}` + '/template')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+            return response.json();
+        });
+}

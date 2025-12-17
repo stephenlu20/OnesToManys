@@ -6,7 +6,6 @@ import java.util.Objects;
 import org.springframework.stereotype.Service;
 import com.planner.api.dto.CreateUserDto;
 import com.planner.api.dto.UpdateUserDto;
-import com.planner.api.entity.Activity;
 import com.planner.api.entity.User;
 import com.planner.api.repository.UserRepository;
 

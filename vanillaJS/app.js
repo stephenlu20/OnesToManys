@@ -28,6 +28,7 @@ function formatActivity(activity) {
 
     return `
         ID: ${activity.id}
+        UserID: ${activity.userId}
         ${activity.label} (${activity.category})
         Duration: ${activity.duration} min
         Date: ${formattedDate}
@@ -59,5 +60,29 @@ function formatUser(user) {
         Last Name: ${user.lastName}
         Age: ${user.age}
         Weight: ${user.weight}
+        `.trim();
+}
+
+function loadTemplates() {
+    fetchTemplates()
+        .then(templates => {
+            clearElement(list);
+
+            templates.forEach(template => {
+                const li = createListItem(formatTemplate(template));
+                list.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error("Failed to load templates:", error);
+        });
+}
+
+function formatTemplate(template) {
+    return `
+        ID: ${template.id}
+        UserID: ${template.userId}
+        Category: ${template.category}
+        Label: ${template.label}
         `.trim();
 }
