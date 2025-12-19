@@ -19,15 +19,6 @@ export const API_ENDPOINTS = {
   TEMPLATES_DELETE_BY_USER: (userId) => `${API_BASE_URL}/template/user/${userId}`
 };
 
-export const CATEGORY_COLORS = {
-  work: 'bg-blue-500',
-  fitness: 'bg-green-500',
-  health: 'bg-red-500',
-  personal: 'bg-purple-500',
-  social: 'bg-yellow-500',
-  default: 'bg-gray-500'
-};
-
 export const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"

@@ -1,21 +1,15 @@
 import React from 'react';
 import Modal from '../common/Modal';
-import { CATEGORY_COLORS } from '../../utils/constants';
 import { formatDateTime } from '../../utils/dateUtils';
 
 export default function ActivityDetailModal({ activity, onClose }) {
   if (!activity) return null;
 
-  const colorClass = CATEGORY_COLORS[activity.category] || CATEGORY_COLORS.default;
-
   return (
     <Modal isOpen={!!activity} onClose={onClose} title={activity.label}>
       <div className="space-y-3">
         <div>
-          <span className="font-semibold">Category:</span>
-          <span className={`ml-2 px-2 py-1 rounded text-white text-sm ${colorClass}`}>
-            {activity.category}
-          </span>
+          <span className="font-semibold">Category:</span> {activity.category}
         </div>
         
         <div>

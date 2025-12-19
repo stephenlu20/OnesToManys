@@ -1,9 +1,8 @@
 import React from 'react';
-import { CATEGORY_COLORS } from '../../utils/constants';
 import { formatTime } from '../../utils/dateUtils';
 
 export default function ActivityBlock({ activity, onClick }) {
-  const colorClass = CATEGORY_COLORS[activity.category] || CATEGORY_COLORS.default;
+  const colorClass = activity.isCompleted ? 'bg-green-500' : 'bg-red-500';
 
   return (
     <div

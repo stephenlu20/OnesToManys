@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useActivities } from '../../hooks/useActivities';
 import { getMonthDays, isSameDate } from '../../utils/dateUtils';
 import { MONTH_NAMES } from '../../utils/constants';
@@ -10,19 +10,37 @@ export default function Calendar({ userId }) {
   const [selectedActivity, setSelectedActivity] = useState(null);
   const { activities, loading } = useActivities(userId);
 
+  const toDateKey = (date) => 
+  `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+  
+  const activitiesByDate = useMemo(() => {
+    const map = {};
+
+    activities.forEach(activity => {
+      const date = new Date(activity.dateTime);
+
+      const key = toDateKey(date);
+
+      if (!map[key]) {
+        map[key] = [];
+      }
+
+      map[key].push(activity);
+    });
+
+    return map;
+  }, [activities]);
+
   const getActivitiesForDate = (day) => {
     if (!day) return [];
-    
-    const dateToCheck = new Date(
-      currentDate.getFullYear(), 
-      currentDate.getMonth(), 
+
+    const key = toDateKey(new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
       day
-    );
-    
-    return activities.filter(activity => {
-      const activityDate = new Date(activity.dateTime);
-      return isSameDate(activityDate, dateToCheck);
-    });
+    ));
+
+    return activitiesByDate[key] || [];
   };
 
   const goToPreviousMonth = () => {
