@@ -177,28 +177,31 @@ INSERT INTO activity (id, user_id, label, category, duration, date_time, is_comp
 INSERT INTO activity
 (id, category, description, duration, label, note, date_time, is_completed, user_id)
 VALUES
--- JANUARY
+-- WEEK OF JAN 5
 (51, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-01-05T14:00:00Z', false, 6),
 (52, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-01-06T14:00:00Z', false, 6),
 (53, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-01-08T14:00:00Z', false, 6),
 (54, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-01-09T14:00:00Z', false, 6),
 
+-- WEEK OF JAN 12
 (55, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-01-12T14:00:00Z', false, 6),
 (56, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-01-13T14:00:00Z', false, 6),
 (57, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-01-15T14:00:00Z', false, 6),
 (58, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-01-16T14:00:00Z', false, 6),
 
+-- WEEK OF JAN 19
 (59, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-01-19T14:00:00Z', false, 6),
 (60, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-01-20T14:00:00Z', false, 6),
 (61, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-01-22T14:00:00Z', false, 6),
 (62, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-01-23T14:00:00Z', false, 6),
 
+-- WEEK OF JAN 26
 (63, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-01-26T14:00:00Z', false, 6),
 (64, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-01-27T14:00:00Z', false, 6),
 (65, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-01-29T14:00:00Z', false, 6),
 (66, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-01-30T14:00:00Z', false, 6),
 
--- FEBRUARY
+-- FEBRUARY (ALL WEEKS)
 (67, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-02-02T14:00:00Z', false, 6),
 (68, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-02-03T14:00:00Z', false, 6),
 (69, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-02-05T14:00:00Z', false, 6),
@@ -214,24 +217,49 @@ VALUES
 (77, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-02-19T14:00:00Z', false, 6),
 (78, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-02-20T14:00:00Z', false, 6),
 
--- MARCH
-(79, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-02T14:00:00Z', false, 6),
-(80, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-03T14:00:00Z', false, 6),
-(81, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-05T14:00:00Z', false, 6),
-(82, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-06T14:00:00Z', false, 6),
+(79, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-02-23T14:00:00Z', false, 6),
+(80, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-02-24T14:00:00Z', false, 6),
+(81, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-02-26T14:00:00Z', false, 6),
+(82, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-02-27T14:00:00Z', false, 6),
 
-(83, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-09T14:00:00Z', false, 6),
-(84, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-10T14:00:00Z', false, 6),
-(85, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-12T14:00:00Z', false, 6),
-(86, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-13T14:00:00Z', false, 6),
+-- MARCH (ALL WEEKS)
+(83, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-02T14:00:00Z', false, 6),
+(84, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-03T14:00:00Z', false, 6),
+(85, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-05T14:00:00Z', false, 6),
+(86, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-06T14:00:00Z', false, 6),
 
--- APRIL
-(87, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-06T14:00:00Z', false, 6),
-(88, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-07T14:00:00Z', false, 6),
-(89, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-09T14:00:00Z', false, 6),
-(90, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-10T14:00:00Z', false, 6),
+(87, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-09T14:00:00Z', false, 6),
+(88, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-10T14:00:00Z', false, 6),
+(89, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-12T14:00:00Z', false, 6),
+(90, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-13T14:00:00Z', false, 6),
 
-(91, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-13T14:00:00Z', false, 6),
-(92, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-14T14:00:00Z', false, 6),
-(93, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-16T14:00:00Z', false, 6),
-(94, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-17T14:00:00Z', false, 6);
+(91, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-16T14:00:00Z', false, 6),
+(92, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-17T14:00:00Z', false, 6),
+(93, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-19T14:00:00Z', false, 6),
+(94, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-20T14:00:00Z', false, 6),
+
+(95, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-23T14:00:00Z', false, 6),
+(96, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-24T14:00:00Z', false, 6),
+(97, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-26T14:00:00Z', false, 6),
+(98, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-27T14:00:00Z', false, 6),
+
+(99, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-03-30T14:00:00Z', false, 6),
+(100, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-03-31T14:00:00Z', false, 6),
+(101, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-02T14:00:00Z', false, 6),
+(102, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-03T14:00:00Z', false, 6),
+
+-- APRIL (UNTIL END)
+(103, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-06T14:00:00Z', false, 6),
+(104, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-07T14:00:00Z', false, 6),
+(105, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-09T14:00:00Z', false, 6),
+(106, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-10T14:00:00Z', false, 6),
+
+(107, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-13T14:00:00Z', false, 6),
+(108, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-14T14:00:00Z', false, 6),
+(109, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-16T14:00:00Z', false, 6),
+(110, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-17T14:00:00Z', false, 6),
+
+(111, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-20T14:00:00Z', false, 6),
+(112, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-21T14:00:00Z', false, 6),
+(113, 'Health & Wellness', 'Upper body strength training', 60, 'Upper Body Workout', 'Chest, shoulders, arms', '2026-04-23T14:00:00Z', false, 6),
+(114, 'Health & Wellness', 'Lower body strength training', 60, 'Lower Body Workout', 'Legs and glutes', '2026-04-24T14:00:00Z', false, 6);
